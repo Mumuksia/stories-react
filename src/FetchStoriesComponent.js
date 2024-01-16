@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class FetchStoriesComponent extends Component {
   render() {
@@ -18,10 +19,20 @@ class FetchStoriesComponent extends Component {
                   <p>{story.title}</p>
                   <p>Author: {story.author}</p>
                   <div
+                    style={{ whiteSpace: 'pre-line' }}
                     dangerouslySetInnerHTML={{
-                      __html: story.data.replace(/\r\n/g, '<br/>'),
+                      __html: story.data,
                     }}
                   />
+                  {/* Pass the entire story object as state */}
+                  <Link
+                    to={{
+                      pathname: `/edit/${story.id}`,
+                      state: { story },
+                    }}
+                  >
+                    Edit
+                  </Link>
                 </li>
               );
             })}

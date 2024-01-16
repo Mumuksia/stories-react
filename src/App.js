@@ -45,7 +45,7 @@ function App() {
             {/* Route to edit form */}
             <Route
               path="/edit/:id"
-              element={<EditStoryForm stories={stories} />}
+              element={<EditStoryForm />}
             />
           </Routes>
         )}
